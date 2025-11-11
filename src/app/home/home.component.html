@@ -1,0 +1,43 @@
+<div class="py-5 w-100 bg-body-secondary">
+    <div class="input-group w-50">
+        <span class="input-group-text">
+            <i class="bi bi-search"></i>
+        </span>
+        <input
+            i18n-placeholder="@@searchInputPlaceHolder"
+            type="text"
+            class="form-control"
+            placeholder="What are you looking for?"
+            aria-label="What are you looking for?"
+        />
+    </div>
+</div>
+<div class="py-5 w-100 text-center">
+    <h2 i18n="@@mainCategoriesTitle">Main Categories</h2>
+    <div class="px-auto py-4 d-flex flex-wrap justify-content-center gap-3">
+        <ng-container [ngClass]="'ms-auto'" *ngTemplateOutlet="categoryCardLoading"></ng-container>
+        <ng-container *ngTemplateOutlet="categoryCardLoading"></ng-container>
+        <ng-container *ngTemplateOutlet="categoryCardLoading"></ng-container>
+        <ng-container *ngTemplateOutlet="categoryCardLoading"></ng-container>
+        <ng-container *ngTemplateOutlet="categoryCardLoading"></ng-container>
+        <ng-container *ngTemplateOutlet="categoryCardLoading"></ng-container>
+    </div>
+</div>
+<ng-template #categoryCardLoading>
+    <div class="card w-25" aria-hidden="true">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title placeholder-glow">
+                <span class="placeholder col-6"></span>
+            </h5>
+            <p class="card-text placeholder-glow">
+            <span class="placeholder col-7"></span>
+            <span class="placeholder col-4"></span>
+            <span class="placeholder col-4"></span>
+            <span class="placeholder col-6"></span>
+            <span class="placeholder col-8"></span>
+            </p>
+            <button class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></button>
+        </div>
+    </div>
+</ng-template>

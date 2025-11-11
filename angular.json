@@ -10,6 +10,14 @@
           "style": "scss"
         }
       },
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "pt-PT": {
+            "translation": "src/locale/messages.pt-PT.json"
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -21,7 +29,8 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -56,6 +65,11 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "pt-PT": {
+              "localize": [
+                "pt-PT"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -68,6 +82,9 @@
             },
             "development": {
               "buildTarget": "ajudapp:build:development"
+            },
+            "pt-PT": {
+              "buildTarget": "ajudapp:build:development,pt-PT"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +97,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
