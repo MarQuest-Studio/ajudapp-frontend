@@ -1,6 +1,7 @@
 {
   "locale": "pt-PT",
   "translations": {
-    "searchInputPlaceHolder": "Termo de pesquisa"
+    "searchInputPlaceHolder": "O que procuras?",
+    "mainCategoriesTitle": "Categorias Principais"
   }
 }

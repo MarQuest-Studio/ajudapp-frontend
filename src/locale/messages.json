@@ -1,6 +1,7 @@
 {
-  "locale": "pt-PT",
+  "locale": "en-US",
   "translations": {
-    "searchInputPlaceHolder": "Username"
+    "searchInputPlaceHolder": "What are you looking for?",
+    "mainCategoriesTitle": "Main Categories"
   }
 }
