@@ -1,7 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { appConfig } from './app.config';
-import { routes } from './app.routes';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
