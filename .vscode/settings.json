@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "marquest-studio",
+        "projectKey": "MarQuest-Studio_ajudapp-frontend"
+    }
+}
