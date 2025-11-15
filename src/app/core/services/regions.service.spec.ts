@@ -33,5 +33,28 @@ describe('RegionsService', () => {
     const hits = service.searchRegions('Fermentelos');
     expect(hits.some(h => h.kind === 'parish' && h.parish === 'Fermentelos')).toBeTrue();
   });
+
+  it('searchRegions should return empty array for empty query', () => {
+    const hits = service.searchRegions('');
+    expect(hits.length).toBe(0);
+  });
+
+  it('searchRegions should return empty array for query with only whitespace', () => {
+    const hits = service.searchRegions('   ');
+    expect(hits.length).toBe(0);
+  });
+
+  it('searchRegions should handle exact district matches with bonus', () => {
+    const hits = service.searchRegions('Aveiro');
+    const exactMatchIdx = hits.findIndex(h => h.kind === 'city' && h.city === 'Aveiro');
+    // Exact match should have a high score (W_CITY + EXACT_BONUS = 60 + 400 = 460)
+    expect(exactMatchIdx).toBe(0);
+    expect(hits[exactMatchIdx].score).toBe(460);
+  });
+
+  it('searchRegions should handle prefix matches correctly', () => {
+    const hits = service.searchRegions('Fer');
+    expect(hits.some(h => h.kind === 'parish' && h.parish?.startsWith('Fer'))).toBeTrue();
+  });
 });
 
