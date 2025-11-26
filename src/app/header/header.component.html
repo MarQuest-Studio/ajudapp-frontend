@@ -28,6 +28,13 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
+        @if (!keycloakService.isAuthenticated) {
+        <button class="btn btn-outline-success" (click)="keycloakService.login()">Login</button>
+        }
+        @if (keycloakService.isAuthenticated) {
+        <button class="btn btn-outline-danger" (click)="keycloakService.logoutKeycloak()">Logout</button>
+        }
+
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
