@@ -40,6 +40,7 @@ export default keycloak;
 export class KeycloakService {
 
   readonly http = inject(HttpClient);
+
   public logoutKeycloak() {
     this.http.get(keycloak.createLogoutUrl()).subscribe();
   }
