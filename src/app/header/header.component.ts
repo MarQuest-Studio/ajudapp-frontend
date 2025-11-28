@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { KeycloakService } from '../core/services/keycloak.service';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   standalone: true,
 })
 export class HeaderComponent {
-
+  keycloakService = inject(KeycloakService);
 }

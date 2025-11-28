@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode, provideAppInitializer } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -7,7 +7,19 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { regionsReducer } from './state/regions/regions.reducer';
 import { RegionsEffects } from './state/regions/regions.effects';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { tokenInterceptor } from './core/interceptors/token.interceptor';
+import { initializeKeycloak } from './core/services/keycloak.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore({ regions: regionsReducer }), provideEffects([RegionsEffects]), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes), 
+    provideStore({ regions: regionsReducer }), 
+    provideEffects([RegionsEffects]), 
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideAppInitializer(initializeKeycloak()),
+    provideHttpClient(
+      withInterceptors([tokenInterceptor])
+    )]
 };
