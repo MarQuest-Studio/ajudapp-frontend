@@ -1,27 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { KeycloakService, initializeKeycloak } from './keycloak.service';
-import { provideHttpClient } from '@angular/common/http';
-import keycloak from './keycloak.service';
+import keycloak, { KeycloakService, initializeKeycloak } from './keycloak.service';
+
 
 describe('KeycloakService', () => {
   let service: KeycloakService;
-  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        KeycloakService,
-        provideHttpClient(),
-        provideHttpClientTesting()
+        KeycloakService
       ]
     });
     service = TestBed.inject(KeycloakService);
-    httpMock = TestBed.inject(HttpTestingController);
-  });
-
-  afterEach(() => {
-    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -57,18 +47,11 @@ describe('KeycloakService', () => {
   });
 
   it('logoutKeycloak should make HTTP GET request to logout URL', () => {
-    const createLogoutUrlSpy = spyOn(keycloak, 'createLogoutUrl').and.returnValue('http://localhost:8080/logout');
+    const logoutSpy = spyOn(keycloak, 'logout');
     
-    service.logoutKeycloak();
+    service.logout();
     
-    const req = httpMock.expectOne('http://localhost:8080/logout');
-    expect(createLogoutUrlSpy).toHaveBeenCalled();
-    expect(req.request.method).toBe('GET');
-    req.flush(null);
-  });
-
-  it('service should inject http client', () => {
-    expect(service['http']).toBeDefined();
+    expect(logoutSpy).toHaveBeenCalled();
   });
 });
 
