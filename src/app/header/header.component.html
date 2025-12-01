@@ -1,43 +1,32 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+  <div class="container-fluid mx-3">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-truck me-2"></i>
+      Ajudapp
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+    <div class="collapse navbar-collapse d-flex justify-content-end gap-3" id="navbarSupportedContent">
+      <button i18n="@@chatAction" class="btn btn-outline-secondary">
+        <i class="bi bi-chat-left-text-fill me-2"></i>
+        Chat
+      </button>
+      @if (!keycloakService.isAuthenticated) {
+        <button i18n="@@loginAction" class="btn btn-primary" (click)="keycloakService.login()">Login</button>
+      }
+      @if (keycloakService.isAuthenticated) {
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-fill"></i>
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button i18n="@@settingsAction" class="btn dropdown-item">Settings</button></li>
+            <li><button i18n="@@logoutAction" class="btn dropdown-item" (click)="keycloakService.logout()">Logout</button></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        @if (!keycloakService.isAuthenticated) {
-        <button class="btn btn-outline-success" (click)="keycloakService.login()">Login</button>
-        }
-        @if (keycloakService.isAuthenticated) {
-        <button class="btn btn-outline-danger" (click)="keycloakService.logoutKeycloak()">Logout</button>
-        }
-
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        </div>
+      }
     </div>
   </div>
 </nav>
+<hr />

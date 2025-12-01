@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, isDevMode } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import Keycloak from 'keycloak-js';
 
 const keycloak = new Keycloak({
@@ -39,10 +38,8 @@ export default keycloak;
 })
 export class KeycloakService {
 
-  readonly http = inject(HttpClient);
-
-  public logoutKeycloak() {
-    this.http.get(keycloak.createLogoutUrl()).subscribe();
+  public logout() {
+    keycloak.logout();
   }
 
   public login() {
