@@ -1,37 +1,29 @@
-.input-group-text {
-    background-color: var(--bs-body-bg);
-    border-right: none;
-}
-
-.input-group > input {
-    border-left: none;
-
-    &:focus {
-        color: unset;
-        background-color: unset;
-        border: 0;
-        outline: unset;
-        box-shadow: unset;
-    }
-}
-
-.input-group:focus-within {
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
-}
-
-.input-group:focus-within > .input-group-text {
-    border: none;
-}
-
-.input-group {
-    height: calc(16px * 4);
-    left: 25%;
+app-dropdown-filter, .input-group {
+    max-height: calc(16px * 4);
+    height: 30%;
 }
 
 hr {
     margin: 0;
+}
+
+.search-section {
+    height: 25vh;
+    background-image: url("https://www.shutterstock.com/image-photo/construction-site-excavators-on-sunny-600nw-2389090153.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Add this */
+    display: block; /* Or inline-block */
 }
