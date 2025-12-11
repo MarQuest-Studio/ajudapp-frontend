@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropdownFilterComponent } from './dropdown-filter.component';
 
 describe('DropdownFilterComponent', () => {
-  let component: DropdownFilterComponent;
-  let fixture: ComponentFixture<DropdownFilterComponent>;
+  let component: DropdownFilterComponent<unknown>;
+  let fixture: ComponentFixture<DropdownFilterComponent<unknown>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
