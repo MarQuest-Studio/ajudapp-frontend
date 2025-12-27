@@ -8,11 +8,11 @@
     }
     
     @if (selectedItem && !isTyping) {
-        <div class="selected-display flex-grow-1 form-control"
+        <button class="selected-display flex-grow-1 form-control text-start border-start-0 border-end-0"
             (click)="startTyping()">
             <!-- use same template as dropdown -->
             <ng-container *ngTemplateOutlet="option; context: { $implicit: selectedItem }"></ng-container>
-        </div>
+        </button>
     } @else if (isTyping || !selectedItem) {
         <input type="text"
             #searchInput
@@ -21,8 +21,7 @@
            [(ngModel)]="searchTerm"
            (ngModelChange)="onSearch()"
            (blur)="stopTyping()"
-           appClickOutside (clickOutside)="stopTyping()"
-           [ngClass]="{'border border-start-0 border-end-0': selectedItem}" (click)="startTyping()"/>
+           appClickOutside (clickOutside)="stopTyping()" (click)="startTyping()"/>
     }
 
      @if (selectedItem) {
