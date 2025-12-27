@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { loadRegions, loadRegionsFailure, loadRegionsSuccess, searchRegions, searchRegionSuccess, searchRegionsFailure } from './regions.actions';
+import { RegionHit } from '../../core/services/regions.service';
 
 
 export type City = Record<string, string[]>;
@@ -7,7 +8,7 @@ export type City = Record<string, string[]>;
 export type District = Record<string, City[]>;
 
 export interface RegionsState {
-    districts: District[];
+    districts: RegionHit[];
     loading: boolean;
     error: unknown;
 }

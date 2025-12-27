@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import citiesData from '../../../assets/data/cities.json';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 type CityData = Record<string, string[]>;
 export type HitKind = 'district' | 'city' | 'parish';
@@ -17,7 +17,12 @@ export interface RegionHit {
 })
 export class RegionsService {
   public getRegions() {
-    return of(citiesData);
+    const data: Record<string, CityData[]> = citiesData as unknown as Record<string, CityData[]>;
+    const results: RegionHit[] = [];
+    for (const districtName in data) {
+      results.push({district: districtName, kind: 'district', score: 0});
+    }
+    return of(results);
   }
 
   private normalizeString(str: string): string {
@@ -27,19 +32,19 @@ export class RegionsService {
       .replaceAll(/[\u0300-\u036f]/g, '');
   }
 
-  public searchRegions(query: string): RegionHit[] {
+  public searchRegions(query: string): Observable<RegionHit[]> {
     const results: RegionHit[] = [];
     const data: Record<string, CityData[]> = citiesData as unknown as Record<string, CityData[]>;
     const normalizedQuery = this.normalizeString(query);
 
     if (!normalizedQuery) {
-      return results;
+      return this.getRegions();
     }
 
     this.searchThroughDistricts(data, normalizedQuery, results);
     this.rankResults(results, normalizedQuery);
 
-    return results.slice(0, 100); // limit to top 100 results
+    return of(results.slice(0, 100)); // limit to top 100 results
   }
 
   private searchThroughDistricts(data: Record<string, CityData[]>, normalizedQuery: string, results: RegionHit[]) {

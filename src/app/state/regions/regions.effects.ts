@@ -3,8 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
 import { RegionsService } from "../../core/services/regions.service";
-import { loadRegions, loadRegionsFailure, loadRegionsSuccess } from "./regions.actions";
-import { District } from "./regions.reducer";
+import { loadRegions, loadRegionsFailure, loadRegionsSuccess, searchRegions } from "./regions.actions";
 
 @Injectable()
 export class RegionsEffects {
@@ -16,7 +15,17 @@ export class RegionsEffects {
         this.actions$.pipe(
             ofType(loadRegions),
             mergeMap(() => this.regionService.getRegions().pipe(
-                map((data) => loadRegionsSuccess({ districts: data as unknown as District[] })),
+                map((data) => loadRegionsSuccess({ districts: data })),
+                catchError((error: unknown) => of(loadRegionsFailure({ error })))
+            ))
+        )
+    );
+
+    searchRegions$ = createEffect(() => 
+        this.actions$.pipe(
+            ofType(searchRegions),
+            mergeMap(({ query }) => this.regionService.searchRegions(query).pipe(
+                map((data) => loadRegionsSuccess({ districts: data })),
                 catchError((error: unknown) => of(loadRegionsFailure({ error })))
             ))
         )

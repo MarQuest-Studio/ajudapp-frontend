@@ -1,0 +1,12 @@
+.selected-display {
+    flex: 1 1 0;
+    width: 1%;
+    min-width: 0;
+    max-height: 100%;
+
+    &:focus {
+        box-shadow: none;
+        border-top: 0;
+        border-bottom: 0;
+    }
+}
