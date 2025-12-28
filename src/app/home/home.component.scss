@@ -19,11 +19,3 @@ hr {
     display: flex;
     flex-direction: column;
 }
-
-.dropdown-span {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; /* Add this */
-    display: block; /* Or inline-block */
-}

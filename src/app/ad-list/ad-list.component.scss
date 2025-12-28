@@ -1,0 +1,13 @@
+app-dropdown-filter {
+  width: 15vw;
+  display: block;
+}
+
+/* chevron icon rotates when panel is open */
+.chevron {
+  display: inline-block;
+  transition: transform 0.15s ease-in-out;
+}
+.chevron.open {
+  transform: rotate(180deg);
+}

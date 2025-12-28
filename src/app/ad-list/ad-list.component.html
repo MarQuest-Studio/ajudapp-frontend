@@ -1,0 +1,191 @@
+<div class="d-flex gap-5">
+  <div class="d-flex flex-column app-content p-3" style="height: fit-content">
+    <h3 class="text-lg font-bold">Filter Results</h3>
+
+    <div class="mb-3">
+      <span class="text-base font-medium">Location</span>
+      <app-dropdown-filter
+        class="mt-2"
+        icon="bi bi-geo-alt fs-3"
+        itemDescriptionField="district"
+        itemKeyField="district"
+        [items]="(districts$ | async) || []"
+        (selectedEvent)="onDistrictSelected($event)"
+        (searchEvent)="onLocationSearch($event)"
+      >
+        <ng-template let-item>
+          <div class="d-flex flex-column justify-content-center h-100">
+            <span class="dropdown-span">{{
+              RegionsService.getLabel(item)
+            }}</span>
+            <small>{{ RegionsService.getHitKind(item) }}</small>
+          </div>
+        </ng-template>
+      </app-dropdown-filter>
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-base font-medium">Categories</span>
+        <button
+          class="btn btn-sm btn-link p-0"
+          type="button"
+          (click)="toggleCategories()"
+          [attr.aria-expanded]="categoriesOpen"
+          aria-controls="categoriesCollapse"
+        >
+          <i
+            class="bi bi-chevron-double-down chevron fs-6 text-black"
+            [class.open]="categoriesOpen"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+
+      <div
+        id="categoriesCollapse"
+        class="mt-2 collapse"
+        [class.show]="categoriesOpen"
+      >
+        @for (c of categories; track $index) {
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [id]="'cat-' + c"
+            (change)="toggleCategory(c, $event.target.checked)"
+          />
+          <label class="form-check-label" [for]="'cat-' + c">{{ c }}</label>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-base font-medium">Rating</span>
+        <button
+          class="btn btn-sm btn-link p-0"
+          type="button"
+          (click)="toggleRatingsPanel()"
+          [attr.aria-expanded]="ratingsOpen"
+          aria-controls="ratingCollapse"
+        >
+          <i
+            class="bi bi-chevron-double-down chevron fs-6 text-black"
+            [class.open]="ratingsOpen"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+
+      <div id="ratingCollapse" class="mt-2 collapse" [class.show]="ratingsOpen">
+        @for (r of ratingOptions; track $index) {
+        <div class="form-check d-flex align-items-center">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="rating"
+            [id]="'rating-' + r"
+            (change)="selectRating(r)"
+            [checked]="selectedRating === r"
+          />
+          <label
+            class="form-check-label d-flex align-items-center ms-2"
+            [for]="'rating-' + r"
+          >
+            <span class="me-2">
+              @for (i of [1,2,3,4,5]; track $index) {
+              <span [class.text-warning]="i <= r" [class.text-muted]="i > r"
+                >★</span
+              >
+              }
+            </span>
+
+            @if (r === 5) {
+            <ng-container>5 stars only</ng-container>
+            } @else {
+            <ng-container>or more</ng-container>
+            }
+          </label>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <button class="btn btn-primary btn-sm" (click)="applyFilters()">
+        Apply
+      </button>
+      <button
+        class="btn btn-outline-secondary btn-sm ms-2"
+        (click)="clearFilters()"
+      >
+        Clear
+      </button>
+    </div>
+  </div>
+  <div class="d-flex flex-column flex-grow-1 gap-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>We found over 1000 ads</h1>
+        <span class="ms-2 text-muted">Showing 23 of 150 results</span>
+    </div>
+    <div class="d-flex flex-column flex-grow-1">
+      <ng-container *ngTemplateOutlet="adListing"></ng-container>
+      <ng-container *ngTemplateOutlet="adListing"></ng-container>
+      <ng-container *ngTemplateOutlet="adListing"></ng-container>
+      <ng-container *ngTemplateOutlet="adListing"></ng-container>
+      <ng-container *ngTemplateOutlet="adListing"></ng-container>
+      <ng-container *ngTemplateOutlet="adListing"></ng-container>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-center">
+          <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-double-left"></i></a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-double-right"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<ng-template #adListing let-item>
+  <article class="app-content p-3 mb-3" aria-hidden="true" type="button">
+    <div class="row gap-3">
+      <div class="col d-flex">
+        <div class="ratio ratio-16x9">
+          <img
+            src="https://espacocasa.com/wp-content/uploads/2025/06/560286_3-200x200.png"
+            alt="Plumbing"
+            class="w-100 h-100 object-fit-cover rounded-start"
+          />
+        </div>
+      </div>
+
+      <div class="col-auto">
+        <div class="d-flex flex-column h-100">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="d-flex align-items-center">
+              <span class="text-warning fw-bold">★ ★ ★ ★ ☆</span>
+              <small class="ms-2 text-muted">(24)</small>
+            </div>
+          </div>
+
+          <h5 class="mt-2 mb-1">Plumbing</h5>
+
+          <p class="text-muted mb-3">
+            Short description of the service offering, highlighting the most
+            important details in one line.
+          </p>
+
+          <div class="mt-auto d-flex gap-2">
+            <button class="btn btn-primary" type="button">Contact</button>
+            <button class="btn btn-outline-secondary" type="button">
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</ng-template>
