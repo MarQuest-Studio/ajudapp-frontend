@@ -134,4 +134,30 @@ export class RegionsService {
       return (a.parish ?? '').localeCompare(b.parish ?? '');
     });
   }
+
+  public static getLabel(hit: RegionHit): string {
+    switch (hit.kind) {
+      case 'district':
+        return hit.district;
+      case 'city':
+        return `${hit.city}, ${hit.district}`;
+      case 'parish':
+        return `${hit.parish}, ${hit.city}, ${hit.district}`;
+      default:
+        return hit.district;
+    }
+  }
+
+  public static getHitKind(hit: RegionHit): string {
+    switch (hit.kind) {
+      case 'district':
+        return 'Distrito';
+      case 'city':
+        return 'Concelho';
+      case 'parish':
+        return 'Freguesia';
+      default:
+        return hit.district;
+    }
+  }
 }

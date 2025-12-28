@@ -17,7 +17,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .input-group-text {
     background-color: var(--bs-body-bg);
-    border-right: none;
+    &:not(:last-of-type) {
+      border-right: none;
+    }
 }
 
 .input-group:has(.input-group-text) > input {
@@ -42,4 +44,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .input-group:focus-within > .input-group-text {
     border: none;
+}
+
+hr {
+  color: var(--bs-secondary-border-subtle);
+}
+
+.app-content {
+  border-radius: var(--bs-border-radius-lg) !important;
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-body-bg-rgb), var(--bs-bg-opacity)) !important;
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+  border-color: var(--bs-secondary-border-subtle) !important;
+}
+
+.dropdown-span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Add this */
+  display: block; /* Or inline-block */
 }
