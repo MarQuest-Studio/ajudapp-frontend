@@ -65,3 +65,26 @@ hr {
   white-space: nowrap; /* Add this */
   display: block; /* Or inline-block */
 }
+progress.progress-accessible {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  border-radius: .25rem;
+  background-color: var(--bs-secondary-bg);
+  overflow: hidden;
+}
+
+progress.progress-accessible::-webkit-progress-bar {
+  background-color: var(--bs-secondary-bg);
+  border-radius: .25rem;
+}
+progress.progress-accessible::-webkit-progress-value {
+  background-color: var(--bs-primary, #0d6efd);
+  border-radius: .25rem;
+}
+
+progress.progress-accessible::-moz-progress-bar {
+  background-color: var(--bs-primary, #0d6efd);
+  border-radius: .25rem;
+}

@@ -5,10 +5,11 @@ import { RegionHit, RegionsService } from '../core/services/regions.service';
 import { Store } from '@ngrx/store';
 import { selectDistricts } from '../state/regions/regions.selector';
 import { loadRegions, searchRegions } from '../state/regions/regions.actions';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ad-list',
-  imports: [CommonModule, DropdownFilterComponent],
+  imports: [CommonModule, DropdownFilterComponent, RouterLink],
   templateUrl: './ad-list.component.html',
   styleUrls: ['./ad-list.component.scss'],
   standalone: true,
