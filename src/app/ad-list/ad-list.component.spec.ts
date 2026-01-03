@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Store } from '@ngrx/store';
 
 import { AdListComponent } from './ad-list.component';
@@ -17,7 +18,7 @@ describe('AdListComponent', () => {
     } as unknown as { select: jasmine.Spy; dispatch: jasmine.Spy };
 
     await TestBed.configureTestingModule({
-      imports: [AdListComponent],
+      imports: [AdListComponent, RouterTestingModule],
       providers: [{ provide: Store, useValue: mockStore }]
     }).compileComponents();
 
