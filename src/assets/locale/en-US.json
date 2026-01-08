@@ -1,0 +1,45 @@
+{
+  "common": {
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "update": "Update"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "findContractors": "Find Contractors",
+    "myProjects": "My Projects",
+    "messages": "Messages"
+  },
+  "settings": {
+    "title": "Account Settings",
+    "profile": "Profile",
+    "security": "Security",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "profilePicture": "Profile Picture",
+    "uploadNewPhoto": "Upload New Photo",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "phoneNumber": "Phone Number",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "deleteAccount": "Delete Account",
+    "deleteAccountWarning": "Permanently delete your account and all associated data. This action is irreversible."
+  },
+  "ads": {
+    "title": "Browse Ads",
+    "location": "Location",
+    "categories": "Categories",
+    "rating": "Rating",
+    "contact": "Contact",
+    "details": "View Details",
+    "orMore": "or more"
+  },
+  "home": {
+    "searchPlaceholder": "What are you looking for?",
+    "mainCategories": "Main Categories"
+  }
+}

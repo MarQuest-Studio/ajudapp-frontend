@@ -7,9 +7,15 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { regionsReducer } from './state/regions/regions.reducer';
 import { RegionsEffects } from './state/regions/regions.effects';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { tokenInterceptor } from './core/interceptors/token.interceptor';
 import { initializeKeycloak } from './core/services/keycloak.service';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory() {
+  return new TranslateHttpLoader();
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,5 +27,13 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(initializeKeycloak()),
     provideHttpClient(
       withInterceptors([tokenInterceptor])
-    )]
+    ),
+    TranslateModule.forRoot({
+      defaultLanguage: 'en-US',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }).providers!]
 };
