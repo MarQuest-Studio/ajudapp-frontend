@@ -20,4 +20,15 @@ describe('SettingsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('setActiveTab should switch between multiple tabs', () => {
+    component.setActiveTab('security');
+    expect(component.activeTab).toBe('security');
+
+    component.setActiveTab('privacy');
+    expect(component.activeTab).toBe('privacy');
+
+    component.setActiveTab('profile');
+    expect(component.activeTab).toBe('profile');
+  });
 });

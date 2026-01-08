@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './settings.component.scss',
 })
 export class SettingsComponent {
-  activeTab: string = 'profile';
+  activeTab = 'profile';
 
   settingsNav = [
     { id: 'profile', label: 'Profile', icon: 'person-fill' },
