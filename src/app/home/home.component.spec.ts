@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { TranslateLoader, TranslateModule, TranslateNoOpLoader } from '@ngx-translate/core';
 import { HomeComponent } from './home.component';
 import { loadRegions, searchRegions } from '../state/regions/regions.actions';
 import { RegionHit } from '../core/services/regions.service';
@@ -18,7 +19,12 @@ describe('HomeComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [HomeComponent],
+      imports: [
+        HomeComponent,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: TranslateNoOpLoader }
+        })
+      ],
       providers: [{ provide: Store, useValue: mockStore }]
     }).compileComponents();
 
