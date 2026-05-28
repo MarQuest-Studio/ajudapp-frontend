@@ -6,10 +6,11 @@ import { loadRegions, searchRegions } from '../state/regions/regions.actions';
 import { DropdownFilterComponent } from "../shared/dropdown-filter/dropdown-filter.component";
 import { RegionHit, RegionsService } from '../core/services/regions.service';
 import { RouterLink } from "@angular/router";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, DropdownFilterComponent, RouterLink],
+  imports: [CommonModule, DropdownFilterComponent, RouterLink, TranslateModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,

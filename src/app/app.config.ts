@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection, isDevMode, provideAppInitializer } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, isDevMode, provideAppInitializer } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -11,29 +11,31 @@ import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common
 import { tokenInterceptor } from './core/interceptors/token.interceptor';
 import { initializeKeycloak } from './core/services/keycloak.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-export function HttpLoaderFactory() {
-  return new TranslateHttpLoader();
-}
+import { TranslateHttpLoader, provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes), 
-    provideStore({ regions: regionsReducer }), 
-    provideEffects([RegionsEffects]), 
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideStore({ regions: regionsReducer }),
+    provideEffects([RegionsEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideAppInitializer(initializeKeycloak()),
     provideHttpClient(
       withInterceptors([tokenInterceptor])
     ),
-    TranslateModule.forRoot({
-      defaultLanguage: 'en-US',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }).providers!]
+    importProvidersFrom(
+      TranslateModule.forRoot({
+        defaultLanguage: 'en-US',
+        loader: {
+          provide: TranslateLoader,
+          useClass: TranslateHttpLoader
+        }
+      })
+    ),
+    provideTranslateHttpLoader({
+      prefix: '/assets/locale/',
+      suffix: '.json'
+    })
+  ],
 };

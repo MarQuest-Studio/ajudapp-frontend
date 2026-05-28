@@ -6,10 +6,11 @@ import { Store } from '@ngrx/store';
 import { selectDistricts } from '../state/regions/regions.selector';
 import { loadRegions, searchRegions } from '../state/regions/regions.actions';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ad-list',
-  imports: [CommonModule, DropdownFilterComponent, RouterLink],
+  imports: [CommonModule, DropdownFilterComponent, RouterLink, TranslateModule],
   templateUrl: './ad-list.component.html',
   styleUrls: ['./ad-list.component.scss'],
   standalone: true,
@@ -19,7 +20,7 @@ export class AdListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadRegions());
   }
-  categories = ['Plumbing', 'Electrical', 'Carpentry', 'Cleaning'];
+  categories = ['plumbing', 'electrical', 'carpentry', 'cleaning'];
   selectedCategories = new Set<string>();
   // single rating selection (radio buttons)
   selectedRating: number | null = null;

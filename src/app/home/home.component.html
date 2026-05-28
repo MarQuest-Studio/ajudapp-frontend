@@ -23,16 +23,15 @@
         <i class="bi bi-search fs-3"></i>
       </span>
       <input
-        i18n-placeholder="@@searchInputPlaceHolder"
         type="text"
         class="form-control"
-        placeholder="What are you looking for?"
-        aria-label="What are you looking for?"
+        placeholder="{{ 'home.searchPlaceholder' | translate }}"
+        aria-label="{{ 'home.searchPlaceholder' | translate }}"
       />
     </div>
   </div>
   <div class="mt-5 w-100">
-    <h3 i18n="@@mainCategoriesTitle">Main Categories</h3>
+    <h3>{{ 'home.mainCategoriesTitle' | translate }}</h3>
     <div class="py-4 d-flex flex-wrap justify-content-between align-items-center">
       <ng-container *ngTemplateOutlet="categoryCardLoading"></ng-container>
       <ng-container *ngTemplateOutlet="categoryCardLoading"></ng-container>
@@ -48,8 +47,8 @@
     <img
       src="https://espacocasa.com/wp-content/uploads/2025/06/560286_3-200x200.png"
       class="rounded"
-      alt="..."
+      alt="{{ 'home.categoryPlumbing' | translate }}"
     />
-    <h5>Plumbing</h5>
+    <h5>{{ 'home.categoryPlumbing' | translate }}</h5>
   </div>
 </ng-template>

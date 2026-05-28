@@ -11,7 +11,7 @@ export class AppTranslateService {
   public currentLang$ = this.currentLang.asObservable();
 
   initializeLanguage(): void {
-    const browserLang = this.translate.getBrowserLang() || 'en-US';
+    const browserLang = this.translate.getBrowserCultureLang() || 'en-US';
     const defaultLang = 'en-US';
     const supportedLanguages = ['en-US', 'pt-PT'];
 
