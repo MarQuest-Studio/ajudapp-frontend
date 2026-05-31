@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { TranslateLoader, TranslateModule, TranslateNoOpLoader } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -6,7 +7,12 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideHttpClient()],
-      imports: [AppComponent],
+      imports: [
+        AppComponent,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: TranslateNoOpLoader }
+        })
+      ],
     }).compileComponents();
   });
 

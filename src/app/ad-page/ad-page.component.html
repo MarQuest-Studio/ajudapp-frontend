@@ -1,8 +1,8 @@
 <div class="d-flex flex-column gap-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Plumbing</a></li>
-        <li class="breadcrumb-item active" aria-current="page">San Francisco</li>
+        <li class="breadcrumb-item"><a href="#">{{ 'adPage.breadcrumbCategory' | translate }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ 'adPage.breadcrumbLocation' | translate }}</li>
     </ol>
     </nav>
     <div class="d-flex gap-5">
@@ -14,29 +14,29 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://espacocasa.com/wp-content/uploads/2025/06/560286_3-200x200.png" class="d-block w-100" alt="...">
+                        <img src="https://espacocasa.com/wp-content/uploads/2025/06/560286_3-200x200.png" class="d-block w-100" alt="{{ 'adPage.carouselImageAlt' | translate }}">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://espacocasa.com/wp-content/uploads/2025/06/560286_3-200x200.png" class="d-block w-100" alt="...">
+                        <img src="https://espacocasa.com/wp-content/uploads/2025/06/560286_3-200x200.png" class="d-block w-100" alt="{{ 'adPage.carouselImageAlt' | translate }}">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#adCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                    <span class="visually-hidden">{{ 'adPage.previous' | translate }}</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#adCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                    <span class="visually-hidden">{{ 'adPage.next' | translate }}</span>
                 </button>
             </div>
             <hr>
 
-            <h5>Description</h5>
-            <p class="mb-0">Experienced plumber providing repairs, installations and emergency services in the San Francisco area. Available for same-day calls and free estimates — contact to discuss your project.</p>
+            <h5>{{ 'adPage.descriptionTitle' | translate }}</h5>
+            <p class="mb-0">{{ 'adPage.descriptionText' | translate }}</p>
 
             <hr>
             <!-- Ratings & Reviews -->
-            <h5>Ratings &amp; Reviews</h5>
+            <h5>{{ 'adPage.ratingsReviewsTitle' | translate }}</h5>
 
             <div class="d-flex flex-wrap align-items-start gap-3 mt-3">
                 <div class="text-center">
@@ -66,9 +66,9 @@
             <div class="mt-4">
                 <div class="mb-3">
                     <div class="d-flex align-items-start gap-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXl5I1myz0pVPqRyfiTGcnSs2XYmMK5ANIBewYoEV31nke842-0IA0fEEhhadmvhsOcuJDxKojMU5x3Tmp646ii_MljPC_JjHUn-b2ykbTI3EXVxRuUPGK9UqXJlTqVv6fahhbvhuIhLlkce5bb2GkdGCfZJVArmkTyLxtSvRyc9liABgRKa_Olrs9BMoX6q0tMshh1knWXIQOm8Yqvr_-tedJOmiyjsKylqeT4805k1lW0EkGUP6PxGGnrXd_rrgFyARiv63_vX90" alt="Alex Johnson" class="rounded-circle" width="48" height="48">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXl5I1myz0pVPqRyfiTGcnSs2XYmMK5ANIBewYoEV31nke842-0IA0fEEhhadmvhsOcuJDxKojMU5x3Tmp646ii_MljPC_JjHUn-b2ykbTI3EXVxRuUPGK9UqXJlTqVv6fahhbvhuIhLlkce5bb2GkdGCfZJVArmkTyLxtSvRyc9liABgRKa_Olrs9BMoX6q0tMshh1knWXIQOm8Yqvr_-tedJOmiyjsKylqeT4805k1lW0EkGUP6PxGGnrXd_rrgFyARiv63_vX90" alt="{{ 'adPage.reviewImageAlt1' | translate }}" class="rounded-circle" width="48" height="48">
                         <div class="flex-grow-1">
-                            <p class="mb-1 fw-bold">Alex Johnson <small class="text-muted ms-2">2 weeks ago</small></p>
+                            <p class="mb-1 fw-bold">{{ 'adPage.reviewerName1' | translate }} <small class="text-muted ms-2">{{ 'adPage.reviewTime1' | translate }}</small></p>
                             <div class="text-warning mb-2">
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
@@ -76,7 +76,7 @@
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="mb-0 text-muted">Absolutely fantastic service. They were on time, professional, and fixed my shower pressure issue in under an hour. Highly recommended!</p>
+                            <p class="mb-0 text-muted">{{ 'adPage.reviewText1' | translate }}</p>
                         </div>
                     </div>
                 </div>
@@ -84,9 +84,9 @@
                 <div class="border-top pt-3">
                     <div class="mb-3">
                         <div class="d-flex align-items-start gap-3">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAefb1bBldE7-eHrWeRCNADCdV-Pk3AgOqYZ4b3Hljl3RCDz05L1iDWMM_1Y0vJXmlDgLmLEF3Fm6_cggNpV17xJ1H4esDjH8pez1gZTIP3T9_zsSB9m16TjJLls4tsObBD7TFn4u5GxNGKzQ3rW_Gt4-3woiV4I1y_Eh-1_aV3VToe51rBc4-PCwj2npOdfTz-aUEQZYMdUKSjhDyG-5M8bHK7Ic3PyBx3EJRc9J1h7DzxevynxxuDun1LLBvKhEIeHE4fIYtzLWHI" alt="Maria Garcia" class="rounded-circle" width="48" height="48">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAefb1bBldE7-eHrWeRCNADCdV-Pk3AgOqYZ4b3Hljl3RCDz05L1iDWMM_1Y0vJXmlDgLmLEF3Fm6_cggNpV17xJ1H4esDjH8pez1gZTIP3T9_zsSB9m16TjJLls4tsObBD7TFn4u5GxNGKzQ3rW_Gt4-3woiV4I1y_Eh-1_aV3VToe51rBc4-PCwj2npOdfTz-aUEQZYMdUKSjhDyG-5M8bHK7Ic3PyBx3EJRc9J1h7DzxevynxxuDun1LLBvKhEIeHE4fIYtzLWHI" alt="{{ 'adPage.reviewImageAlt2' | translate }}" class="rounded-circle" width="48" height="48">
                             <div class="flex-grow-1">
-                                <p class="mb-1 fw-bold">Maria Garcia <small class="text-muted ms-2">1 month ago</small></p>
+                                <p class="mb-1 fw-bold">{{ 'adPage.reviewerName2' | translate }} <small class="text-muted ms-2">{{ 'adPage.reviewTime2' | translate }}</small></p>
                                 <div class="text-warning mb-2">
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-fill"></i>
@@ -94,7 +94,7 @@
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-half"></i>
                                 </div>
-                                <p class="mb-0 text-muted">Great job on our kitchen remodel plumbing. They were communicative throughout the process. A little pricey, but you get what you pay for.</p>
+                                <p class="mb-0 text-muted">{{ 'adPage.reviewText2' | translate }}</p>
                             </div>
                         </div>
                     </div>
@@ -103,30 +103,30 @@
         </div>
         <div class="d-flex flex-column app-content gap-3 p-3" style="height: fit-content; width: 18vw;">
             <div class="d-flex align-items-center gap-3">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Eo3VmSfAwFJoEBXJuMj4pUX7cUoCQDq9jGPXvFepO2NCYKORjvsWre5izWgKm4WzdR7hXFfsoOw9UwCJvdjPMIokfO_qWoKxiqVynmu28s4c5_sGo374ef2akRdx5z_aA7d7Ivc3VjwGk_hLRw0BXlM_0w1Xm6rHQQAx_cyuOr-B1CADPcYlzYZV5SUc8MC8Zkr8kyVbB8FKdSQzvYO5aPgKe9UFL2CyobV8i9kKWBHS1pyCdGw7p6ZBAyW94V20uDTaViHTisQZ" alt="Contractor's profile picture" class="rounded-circle" width="64" height="64">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Eo3VmSfAwFJoEBXJuMj4pUX7cUoCQDq9jGPXvFepO2NCYKORjvsWre5izWgKm4WzdR7hXFfsoOw9UwCJvdjPMIokfO_qWoKxiqVynmu28s4c5_sGo374ef2akRdx5z_aA7d7Ivc3VjwGk_hLRw0BXlM_0w1Xm6rHQQAx_cyuOr-B1CADPcYlzYZV5SUc8MC8Zkr8kyVbB8FKdSQzvYO5aPgKe9UFL2CyobV8i9kKWBHS1pyCdGw7p6ZBAyW94V20uDTaViHTisQZ" alt="{{ 'adPage.sellerImageAlt' | translate }}" class="rounded-circle" width="64" height="64">
                 <div>
-                    <h5 class="mb-0">John's Plumbing Co.</h5>
-                    <small class="text-muted">Member since 2018</small>
+                    <h5 class="mb-0">{{ 'adPage.sellerName' | translate }}</h5>
+                    <small class="text-muted">{{ 'adPage.memberSince' | translate }}</small>
                     <div class="d-flex align-items-center gap-2">
                         <i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i>
-                        <small class="text-primary">Verified</small>
+                        <small class="text-primary">{{ 'adPage.verified' | translate }}</small>
                     </div>
                 </div>
             </div>
 
-            <h4 class="mt-2 mb-1">Some ad name here</h4>
+            <h4 class="mt-2 mb-1">{{ 'adPage.adTitle' | translate }}</h4>
 
             <hr>
 
             <div class="d-grid gap-3">
                 <button class="btn btn-primary btn-lg d-flex align-items-center justify-content-center gap-2">
                     <i class="bi bi-chat-dots fs-5" aria-hidden="true"></i>
-                    <span>Chat with John</span>
+                    <span>{{ 'adPage.chatWithSeller' | translate }}</span>
                 </button>
 
                 <button class="btn btn-outline-secondary btn-lg d-flex align-items-center justify-content-center gap-2">
                     <i class="bi bi-flag-fill text-danger fs-5" aria-hidden="true"></i>
-                    <span>Report Ad</span>
+                    <span>{{ 'adPage.reportAd' | translate }}</span>
                 </button>
             </div>
 

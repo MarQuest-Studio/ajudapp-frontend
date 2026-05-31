@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Store } from '@ngrx/store';
+import { TranslateLoader, TranslateModule, TranslateNoOpLoader } from '@ngx-translate/core';
 
 import { AdListComponent } from './ad-list.component';
 import { loadRegions, searchRegions } from '../state/regions/regions.actions';
@@ -18,7 +19,13 @@ describe('AdListComponent', () => {
     } as unknown as { select: jasmine.Spy; dispatch: jasmine.Spy };
 
     await TestBed.configureTestingModule({
-      imports: [AdListComponent, RouterTestingModule],
+      imports: [
+        AdListComponent,
+        RouterTestingModule,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: TranslateNoOpLoader }
+        })
+      ],
       providers: [{ provide: Store, useValue: mockStore }]
     }).compileComponents();
 
@@ -102,12 +109,12 @@ describe('AdListComponent', () => {
 
   it('category checkbox DOM change calls toggleCategory', fakeAsync(() => {
     fixture.detectChanges();
-    const checkbox = fixture.nativeElement.querySelector('#cat-Plumbing') as HTMLInputElement;
-    expect(checkbox).toBeDefined();
+    const checkbox = fixture.nativeElement.querySelector('#cat-plumbing') as HTMLInputElement;
+    expect(checkbox).toBeTruthy();
     checkbox.checked = true;
     checkbox.dispatchEvent(new Event('change'));
     tick();
     fixture.detectChanges();
-    expect(component.selectedCategories.has('Plumbing')).toBeTrue();
+    expect(component.selectedCategories.has('plumbing')).toBeTrue();
   }));
 });

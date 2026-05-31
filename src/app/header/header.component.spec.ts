@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateLoader, TranslateModule, TranslateNoOpLoader } from '@ngx-translate/core';
 
 import { HeaderComponent } from './header.component';
 import { provideHttpClient } from '@angular/common/http';
@@ -10,7 +11,12 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideHttpClient()],
-      imports: [HeaderComponent]
+      imports: [
+        HeaderComponent,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: TranslateNoOpLoader }
+        })
+      ]
     })
     .compileComponents();
 

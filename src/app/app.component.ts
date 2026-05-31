@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { AppTranslateService } from './core/services/translate.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,13 @@ import { HeaderComponent } from './header/header.component';
   styleUrls: ['./app.component.scss'],
   standalone: true,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  translateService = inject(AppTranslateService);
+
+  ngOnInit(): void {
+    this.translateService.initializeLanguage();  
+  }
+
   title = 'ajudapp';
 }

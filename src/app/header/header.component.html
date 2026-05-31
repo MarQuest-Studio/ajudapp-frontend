@@ -8,12 +8,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex justify-content-end gap-3" id="navbarSupportedContent">
-      <button i18n="@@chatAction" class="btn btn-outline-secondary">
+      <button class="btn btn-outline-secondary">
         <i class="bi bi-chat-left-text-fill me-2"></i>
-        Chat
+        {{ 'header.chatAction' | translate }}
       </button>
       @if (!keycloakService.isAuthenticated) {
-        <button i18n="@@loginAction" class="btn btn-primary" (click)="keycloakService.login()">Login</button>
+        <button class="btn btn-primary" (click)="keycloakService.login()">{{ 'header.loginAction' | translate }}</button>
       }
       @if (keycloakService.isAuthenticated) {
         <div class="dropdown">
@@ -21,8 +21,8 @@
             <i class="bi bi-person-fill"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><button i18n="@@settingsAction" class="btn dropdown-item">Settings</button></li>
-            <li><button i18n="@@logoutAction" class="btn dropdown-item" (click)="keycloakService.logout()">Logout</button></li>
+            <li><button class="btn dropdown-item">{{ 'header.settingsAction' | translate }}</button></li>
+            <li><button class="btn dropdown-item" (click)="keycloakService.logout()">{{ 'header.logoutAction' | translate }}</button></li>
           </ul>
         </div>
       }
