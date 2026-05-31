@@ -7,7 +7,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { regionsReducer } from './state/regions/regions.reducer';
 import { RegionsEffects } from './state/regions/regions.effects';
-import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { tokenInterceptor } from './core/interceptors/token.interceptor';
 import { initializeKeycloak } from './core/services/keycloak.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
